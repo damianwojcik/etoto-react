@@ -1039,7 +1039,7 @@ button {
     width: 0;
     background: #0069D9;
     height: 2px;
-    transition: background 0.3s ease; }
+    transition: all 0.3s ease; }
     .progressbar__inner--done {
       background: #37C500; }
 

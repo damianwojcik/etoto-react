@@ -1,10 +1,12 @@
 import React, { useState } from 'react';
+import Logo from './components/Logo';
+import Header from './components/Header';
+import STEP_1_1 from './components/form/STEP_1_1';
+import STEP_1_2 from './components/form/STEP_1_2';
+import STEP_1_3 from './components/form/STEP_1_3';
+import STEP_2 from './components/form/STEP_2';
+import STEP_3 from './components/form/STEP_3';
 import './App.css';
-import STEP_1_1 from './views/STEP_1_1';
-import STEP_1_2 from './views/STEP_1_2';
-import STEP_1_3 from './views/STEP_1_3';
-import STEP_2 from './views/STEP_2';
-import STEP_3 from './views/STEP_3';
 
 function App() {
   const [currentPage, setCurrentPage] = useState('1_1');
@@ -37,7 +39,13 @@ function App() {
       break;
   }
 
-  return currentPageComponent;
+  return (
+    <div className="page-wrapper">
+      <Logo />
+      <Header currentPage={currentPage} />
+      <form className="form">{currentPageComponent}</form>
+    </div>
+  );
 }
 
 export default App;
