@@ -1,0 +1,106 @@
+.mobile-only {
+  @media (min-width: $breakpoint) {
+    display: none !important;
+  }
+}
+
+.desktop-only {
+  display: none !important;;
+  @media (min-width: $breakpoint) {
+    display: block !important;
+  }
+}
+
+.mb-10 {
+  margin-bottom: 10px;
+}
+  
+.mb-15 {
+  margin-bottom: 15px;
+}
+  
+.mb-20 {
+  margin-bottom: 20px;
+}
+  
+.mb-25 {
+  margin-bottom: 25px;
+}
+
+.mb-30 {
+  margin-bottom: 25px;
+}
+  
+.mb-35 {
+  margin-bottom: 35px;
+}
+  
+.mb-40 {
+  margin-bottom: 40px;
+}
+  
+.d-mb-25 {
+  @media (min-width: $breakpoint) {
+    margin-bottom: 25px;
+  }
+}
+  
+.d-mb-30 {
+  @media (min-width: $breakpoint) {
+    margin-bottom: 30px;
+  }
+}
+  
+.d-mb-35 {
+  @media (min-width: $breakpoint) {
+    margin-bottom: 35px;
+  }
+}
+  
+.d-mb-40 {
+  @media (min-width: $breakpoint) {
+    margin-bottom: 40px;
+  }
+}
+  
+.d-mb-45 {
+  @media (min-width: $breakpoint) {
+    margin-bottom: 45px;
+  }
+}
+  
+.d-mb-50 {
+  @media (min-width: $breakpoint) {
+    margin-bottom: 50px;
+  }
+}
+  
+.d-mb-60 {
+  @media (min-width: $breakpoint) {
+    margin-bottom: 60px;
+  }
+}
+  
+.d-mb-80 {
+  @media (min-width: $breakpoint) {
+    margin-bottom: 80px;
+  }
+}
+  
+.d-mb-100 {
+  @media (min-width: $breakpoint) {
+    margin-bottom: 100px;
+  }
+}
+  
+.d-mb-130 {
+  @media (min-width: $breakpoint) {
+    margin-bottom: 130px;
+  }
+}
+  
+.d-ml-115 {
+  @media (min-width: $breakpoint) {
+    margin-left: 115px;
+  }
+}
