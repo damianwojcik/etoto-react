@@ -948,6 +948,10 @@ button {
     .button--small {
       padding: 20px 40px 16px; } }
 
+.link-wrapper {
+  text-align: center;
+}
+
 .link-wrapper button {
   cursor: pointer;
   font-weight: 700;

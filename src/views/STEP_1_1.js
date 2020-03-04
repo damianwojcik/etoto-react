@@ -1,15 +1,11 @@
 import React from 'react';
+import Logo from '../components/Logo';
+import selfie from '../assets/images/selfie.jpg';
 
 const STEP_1_1 = ({ setCurrentPage }) => {
   return (
     <div className="page-wrapper">
-      <picture className="logo">
-        <source
-          media="(min-width: 600px)"
-          srcSet="assets/images/logo_tablet.jpg"
-        />
-        <img src="assets/images/logo.jpg" alt="Etoto Promo" />
-      </picture>
+      <Logo />
       <div className="header">
         <div className="steps">
           <span className="steps__number steps__number--active">1</span>
@@ -105,10 +101,7 @@ const STEP_1_1 = ({ setCurrentPage }) => {
             powyższą zgodę.
           </small>
           <div className="img-wrapper selfie mobile-only">
-            <img
-              src="assets/images/selfie.jpg"
-              alt="Zrób zdjęcie dokumentu tożsamości"
-            />
+            <img src={selfie} alt="Zrób zdjęcie dokumentu tożsamości" />
           </div>
           <button
             onClick={e => {

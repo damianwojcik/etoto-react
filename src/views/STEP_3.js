@@ -1,15 +1,10 @@
 import React from 'react';
+import Logo from '../components/Logo';
 
 const STEP_3 = ({ setCurrentPage }) => {
   return (
     <div className="page-wrapper">
-      <picture className="logo">
-        <source
-          media="(min-width: 600px)"
-          srcSet="assets/images/logo_tablet.jpg"
-        />
-        <img src="assets/images/logo.jpg" alt="Etoto Promo" />
-      </picture>
+      <Logo />
       <div className="header">
         <div className="steps">
           <span className="steps__number steps__number--done">
