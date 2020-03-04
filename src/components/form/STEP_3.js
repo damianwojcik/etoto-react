@@ -1,6 +1,14 @@
 import React from 'react';
 
-const STEP_3 = ({ setCurrentPage }) => {
+const STEP_3 = ({ setCurrentPage, form, setForm }) => {
+  // TODO: DRY
+  const handleInputChange = e => {
+    setForm({
+      ...form,
+      [e.target.name]: e.target.value
+    });
+  };
+
   return (
     <>
       <div className="input-wrapper mb-30 d-mb-50">
@@ -13,6 +21,7 @@ const STEP_3 = ({ setCurrentPage }) => {
           className="input js-onlyNumbers js-bet"
           type="tel"
           placeholder=" "
+          onChange={handleInputChange}
         />
       </div>
       <div className="input-wrapper mb-30 d-mb-50 d-ml-115">
@@ -25,6 +34,7 @@ const STEP_3 = ({ setCurrentPage }) => {
           className="input js-onlyNumbers js-bet"
           type="tel"
           placeholder=" "
+          onChange={handleInputChange}
         />
       </div>
       <div className="input-wrapper mb-30 d-mb-50">
@@ -37,6 +47,7 @@ const STEP_3 = ({ setCurrentPage }) => {
           className="input js-onlyNumbers js-hours"
           type="tel"
           placeholder=" "
+          onChange={handleInputChange}
         />
       </div>
       <div className="input-wrapper mb-40 d-mb-100 d-ml-115">
@@ -49,6 +60,7 @@ const STEP_3 = ({ setCurrentPage }) => {
           className="input js-onlyNumbers js-hours"
           type="tel"
           placeholder=" "
+          onChange={handleInputChange}
         />
       </div>
       <div className="buttons-wrapper">

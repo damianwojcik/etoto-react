@@ -1,6 +1,22 @@
 import React from 'react';
 
-const STEP_2 = ({ setCurrentPage }) => {
+const STEP_2 = ({ setCurrentPage, form, setForm }) => {
+  // TODO: DRY
+  const handleInputChange = e => {
+    setForm({
+      ...form,
+      [e.target.name]: e.target.value
+    });
+  };
+
+  // TODO: DRY
+  const handleCheckboxChange = e => {
+    setForm({
+      ...form,
+      [e.target.name]: !form[e.target.name]
+    });
+  };
+
   return (
     <>
       <div className="input-wrapper mb-20 d-mb-35">
@@ -8,9 +24,10 @@ const STEP_2 = ({ setCurrentPage }) => {
           Kraj urodzenia
         </span>
         <select
-          name="nationality"
+          name="country"
           className="js-select2 input select"
           defaultValue="poland"
+          onChange={handleInputChange}
         >
           <option value="poland">Polska</option>
           <option value="Andorra">Andorra</option>
@@ -25,15 +42,17 @@ const STEP_2 = ({ setCurrentPage }) => {
           type="text"
           name="address"
           placeholder="Adres"
+          onChange={handleInputChange}
         />
       </div>
       <div className="input-wrapper mb-20 d-mb-35">
         <input
           id="js-validateZipCode"
           type="tel"
-          name="zipcode"
+          name="zipCode"
           className="input"
           placeholder="Kod pocztowy"
+          onChange={handleInputChange}
         />
       </div>
       <div className="input-wrapper mb-20 d-mb-35 d-ml-115">
@@ -42,6 +61,7 @@ const STEP_2 = ({ setCurrentPage }) => {
           type="text"
           name="city"
           placeholder="Miejscowość"
+          onChange={handleInputChange}
         />
       </div>
       <div className="inner-wrapper inner-wrapper--large">
@@ -52,11 +72,18 @@ const STEP_2 = ({ setCurrentPage }) => {
             name="phone"
             placeholder="Numer telefonu"
             defaultValue="+48 "
+            onChange={handleInputChange}
           />
         </div>
         <div className="checkbox-wrapper mb-35 d-mb-50">
-          <input id="checkbox-2" className="checkbox" type="checkbox" />
-          <label htmlFor="checkbox-2">
+          <input
+            id="checkbox-3"
+            name="checkbox3"
+            className="checkbox"
+            type="checkbox"
+            onChange={handleCheckboxChange}
+          />
+          <label htmlFor="checkbox-3">
             <span className="checkbox__text">
               Zgadzam się na używanie mojego numeru telefonu dla celów
               marketingu bezpośredniego.

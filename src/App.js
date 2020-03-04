@@ -14,27 +14,60 @@ function App() {
     email: '',
     password: '',
     checkbox1: false,
-    checkbox2: false
+    checkbox2: false,
+    firstName: '',
+    lastName: '',
+    nationality: '',
+    pesel: '',
+    identityNumber: '',
+    identityExpiryDate: '',
+    country: '',
+    address: '',
+    zipCode: '',
+    city: '',
+    phone: '',
+    checkbox3: '',
+    bets_daily: '',
+    bets_monthly: '',
+    time_daily: '',
+    time_monthly: ''
   });
-  let currentPageComponent = <STEP_1_1 setCurrentPage={setCurrentPage} />;
+  let currentPageComponent = '';
 
   switch (currentPage) {
     case '1_1':
-      currentPageComponent = <STEP_1_1 setCurrentPage={setCurrentPage} />;
+      currentPageComponent = (
+        <STEP_1_1
+          setCurrentPage={setCurrentPage}
+          form={form}
+          setForm={setForm}
+        />
+      );
       break;
     case '1_2':
       currentPageComponent = <STEP_1_2 setCurrentPage={setCurrentPage} />;
       break;
     case '1_3':
-      currentPageComponent = <STEP_1_3 setCurrentPage={setCurrentPage} />;
+      currentPageComponent = (
+        <STEP_1_3
+          setCurrentPage={setCurrentPage}
+          form={form}
+          setForm={setForm}
+        />
+      );
       break;
     case '2':
-      currentPageComponent = <STEP_2 setCurrentPage={setCurrentPage} />;
+      currentPageComponent = (
+        <STEP_2 setCurrentPage={setCurrentPage} form={form} setForm={setForm} />
+      );
       break;
     case '3':
-      currentPageComponent = <STEP_3 setCurrentPage={setCurrentPage} />;
+      currentPageComponent = (
+        <STEP_3 setCurrentPage={setCurrentPage} form={form} setForm={setForm} />
+      );
       break;
     default:
+      // error component
       currentPageComponent = <STEP_1_1 setCurrentPage={setCurrentPage} />;
       break;
   }

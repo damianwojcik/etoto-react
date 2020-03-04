@@ -1,7 +1,71 @@
 import React from 'react';
 import selfie from '../../assets/images/selfie.jpg';
 
-const STEP_1_1 = ({ setCurrentPage }) => {
+const STEP_1_1 = ({ setCurrentPage, form, setForm }) => {
+  const changePasswordVisibility = e => {
+    var parentElement = e.target.parentElement;
+    var inputElement = parentElement.querySelector('input');
+
+    if (inputElement.type === 'password') {
+      inputElement.type = 'text';
+      e.target.classList.toggle('show');
+    } else {
+      inputElement.type = 'password';
+      e.target.classList.toggle('show');
+    }
+  };
+
+  const expandCheckboxHandler = e => {
+    var wrapperElem = e.target.parentElement;
+    var spanElem = wrapperElem.querySelector('.checkbox__text');
+    var labelElem = wrapperElem.querySelector('label');
+
+    e.preventDefault();
+
+    if (spanElem.classList.contains('expanded')) {
+      labelElem.classList.remove('expanded');
+      spanElem.classList.remove('expanded');
+      e.target.classList.remove('expanded');
+      e.target.innerText = 'rozwiń';
+    } else {
+      labelElem.classList.add('expanded');
+      spanElem.classList.add('expanded');
+      e.target.classList.add('expanded');
+      e.target.innerText = 'zwiń';
+    }
+  };
+
+  const expandDisclaimerHandler = e => {
+    var wrapperElem = e.target.parentElement;
+    var paragraphElem = wrapperElem.querySelector('p');
+
+    e.preventDefault();
+
+    if (paragraphElem.classList.contains('expanded')) {
+      paragraphElem.classList.remove('expanded');
+      e.target.classList.remove('expanded');
+      e.target.innerText = 'rozwiń';
+    } else {
+      paragraphElem.classList.add('expanded');
+      e.target.classList.add('expanded');
+      e.target.innerText = 'zwiń';
+    }
+  };
+
+  const handleInputChange = e => {
+    setForm({
+      ...form,
+      [e.target.name]: e.target.value
+    });
+  };
+
+  const handleCheckboxChange = e => {
+    setForm({
+      ...form,
+      [e.target.name]: !form[e.target.name]
+    });
+  };
+
   return (
     <>
       <div className="input-wrapper mb-15 d-mb-45">
@@ -10,6 +74,7 @@ const STEP_1_1 = ({ setCurrentPage }) => {
           name="email"
           type="email"
           placeholder="Adres e-mail"
+          onChange={handleInputChange}
         />
       </div>
       <div className="input-wrapper mb-25 d-mb-45 d-ml-115">
@@ -18,16 +83,18 @@ const STEP_1_1 = ({ setCurrentPage }) => {
           name="password"
           type="password"
           placeholder="Podaj hasło"
+          onChange={handleInputChange}
         />
-        <span id="js-password"></span>
+        <span onClick={changePasswordVisibility} id="js-password"></span>
       </div>
       <div className="inner-wrapper">
         <div className="checkbox-wrapper checkbox-wrapper--expandable mb-20 d-mb-25">
           <input
             id="checkbox-1"
-            name="checkbox-1"
+            name="checkbox1"
             className="checkbox"
             type="checkbox"
+            onChange={handleCheckboxChange}
           />
           <label htmlFor="checkbox-1">
             <span className="checkbox__text">
@@ -61,6 +128,7 @@ const STEP_1_1 = ({ setCurrentPage }) => {
             type="button"
             id="js-expandCheckbox"
             className="expand-link link"
+            onClick={expandCheckboxHandler}
           >
             rozwiń
           </button>
@@ -68,9 +136,10 @@ const STEP_1_1 = ({ setCurrentPage }) => {
         <div className="checkbox-wrapper mb-15 d-mb-25">
           <input
             id="checkbox-2"
-            name="checkbox-2"
+            name="checkbox2"
             className="checkbox"
             type="checkbox"
+            onChange={handleCheckboxChange}
           />
           <label htmlFor="checkbox-2">
             <span className="checkbox__text">
@@ -121,7 +190,12 @@ const STEP_1_1 = ({ setCurrentPage }) => {
           realiacji usług. Szczegółowe informacje na temat przetwarzania danych
           dostępne są w Polityce Prywatności.
         </p>
-        <button type="button" id="js-expandDisclaimer" className="expand-link">
+        <button
+          type="button"
+          onClick={expandDisclaimerHandler}
+          id="js-expandDisclaimer"
+          className="expand-link"
+        >
           rozwiń
         </button>
       </div>

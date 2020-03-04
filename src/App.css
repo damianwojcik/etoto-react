@@ -1002,6 +1002,7 @@ button {
     background: #dedede;
     color: #878787;
     position: relative;
+    transition: width 0.3s ease, height 0.3s ease;
     font-size: 11px; }
     @media (min-width: 1100px) {
       .steps__number {
