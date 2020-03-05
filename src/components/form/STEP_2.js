@@ -1,4 +1,12 @@
-import React from 'react';
+import React from 'react'
+
+const handleZipCode = e => {
+  if (e.target.value.length === 2) {
+    const newText =
+      e.target.value.substring(0, 2) + '-' + e.target.value.substring(5)
+    e.target.value = newText
+  }
+}
 
 const STEP_2 = ({ setCurrentPage, form, setForm }) => {
   // TODO: DRY
@@ -6,23 +14,21 @@ const STEP_2 = ({ setCurrentPage, form, setForm }) => {
     setForm({
       ...form,
       [e.target.name]: e.target.value
-    });
-  };
+    })
+  }
 
   // TODO: DRY
   const handleCheckboxChange = e => {
     setForm({
       ...form,
       [e.target.name]: !form[e.target.name]
-    });
-  };
+    })
+  }
 
   return (
     <>
       <div className="input-wrapper mb-20 d-mb-35">
-        <span className="errorMessage errorMessage--gray errorMessage--top">
-          Kraj urodzenia
-        </span>
+        <span className="errorMessage errorMessage--gray">Kraj urodzenia</span>
         <select
           name="country"
           className="js-select2 input select"
@@ -47,12 +53,13 @@ const STEP_2 = ({ setCurrentPage, form, setForm }) => {
       </div>
       <div className="input-wrapper mb-20 d-mb-35">
         <input
-          id="js-validateZipCode"
           type="tel"
           name="zipCode"
           className="input"
           placeholder="Kod pocztowy"
           onChange={handleInputChange}
+          onKeyDown={handleZipCode}
+          maxLength="6"
         />
       </div>
       <div className="input-wrapper mb-20 d-mb-35 d-ml-115">
@@ -93,8 +100,8 @@ const STEP_2 = ({ setCurrentPage, form, setForm }) => {
         <div className="buttons-wrapper">
           <button
             onClick={e => {
-              e.preventDefault();
-              setCurrentPage('1_3');
+              e.preventDefault()
+              setCurrentPage('1_3')
             }}
             className="button button--small button--gray mb-20 d-mb-80"
           >
@@ -102,8 +109,8 @@ const STEP_2 = ({ setCurrentPage, form, setForm }) => {
           </button>
           <button
             onClick={e => {
-              e.preventDefault();
-              setCurrentPage('3');
+              e.preventDefault()
+              setCurrentPage('3')
             }}
             className="button mb-20 d-mb-80"
           >
@@ -112,7 +119,7 @@ const STEP_2 = ({ setCurrentPage, form, setForm }) => {
         </div>
       </div>
     </>
-  );
-};
+  )
+}
 
-export default STEP_2;
+export default STEP_2

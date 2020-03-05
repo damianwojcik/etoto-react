@@ -143,12 +143,6 @@ select {
   &--gray {
     color: $gray;
   }
-  &--top {
-    top: -5px;
-    @media (min-width: $breakpoint) {
-      top: 0;
-    }
-  }
 }
 
 .label {

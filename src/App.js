@@ -1,15 +1,16 @@
-import React, { useState } from 'react';
-import Logo from './components/Logo';
-import Header from './components/Header';
-import STEP_1_1 from './components/form/STEP_1_1';
-import STEP_1_2 from './components/form/STEP_1_2';
-import STEP_1_3 from './components/form/STEP_1_3';
-import STEP_2 from './components/form/STEP_2';
-import STEP_3 from './components/form/STEP_3';
-import './App.css';
+import React, { useState } from 'react'
+import Logo from './components/Logo'
+import Header from './components/Header'
+import Tabs from './components/Tabs'
+import STEP_1_1 from './components/form/STEP_1_1'
+import STEP_1_2 from './components/form/STEP_1_2'
+import STEP_1_3 from './components/form/STEP_1_3'
+import STEP_2 from './components/form/STEP_2'
+import STEP_3 from './components/form/STEP_3'
+import './App.css'
 
 function App() {
-  const [currentPage, setCurrentPage] = useState('1_1');
+  const [currentPage, setCurrentPage] = useState('1_3')
   const [form, setForm] = useState({
     email: '',
     password: '',
@@ -31,8 +32,8 @@ function App() {
     bets_monthly: '',
     time_daily: '',
     time_monthly: ''
-  });
-  let currentPageComponent = '';
+  })
+  let currentPageComponent = ''
 
   switch (currentPage) {
     case '1_1':
@@ -42,11 +43,11 @@ function App() {
           form={form}
           setForm={setForm}
         />
-      );
-      break;
+      )
+      break
     case '1_2':
-      currentPageComponent = <STEP_1_2 setCurrentPage={setCurrentPage} />;
-      break;
+      currentPageComponent = <STEP_1_2 setCurrentPage={setCurrentPage} />
+      break
     case '1_3':
       currentPageComponent = (
         <STEP_1_3
@@ -54,31 +55,32 @@ function App() {
           form={form}
           setForm={setForm}
         />
-      );
-      break;
+      )
+      break
     case '2':
       currentPageComponent = (
         <STEP_2 setCurrentPage={setCurrentPage} form={form} setForm={setForm} />
-      );
-      break;
+      )
+      break
     case '3':
       currentPageComponent = (
         <STEP_3 setCurrentPage={setCurrentPage} form={form} setForm={setForm} />
-      );
-      break;
+      )
+      break
     default:
       // error component
-      currentPageComponent = <STEP_1_1 setCurrentPage={setCurrentPage} />;
-      break;
+      currentPageComponent = <STEP_1_1 setCurrentPage={setCurrentPage} />
+      break
   }
 
   return (
     <div className="page-wrapper">
       <Logo />
       <Header currentPage={currentPage} />
+      {currentPage === '3' && <Tabs />}
       <form className="form">{currentPageComponent}</form>
     </div>
-  );
+  )
 }
 
-export default App;
+export default App

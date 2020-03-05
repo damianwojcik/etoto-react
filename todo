@@ -1,7 +1,8 @@
-- react / vanilla inputMask
-- react select2
+- react select2 - https://github.com/JedWatson/react-select
 - validate onChange
-- animations
-- zł / godzin
+- animations - gsap?
 - scss modules?
 - transition __number size
+- button disabled/enabled - Validation
+- image-preload Gatsby-like
+- get rid of "js-*" classes

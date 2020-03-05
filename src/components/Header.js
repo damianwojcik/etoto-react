@@ -1,8 +1,8 @@
-import React from 'react';
-import useWindowWidth from '../hooks/useWindowWidth';
+import React from 'react'
+import useWindowWidth from '../hooks/useWindowWidth'
 
 const Header = ({ currentPage }) => {
-  const windowWidth = useWindowWidth();
+  const windowWidth = useWindowWidth()
 
   return (
     <div className="header">
@@ -98,7 +98,7 @@ const Header = ({ currentPage }) => {
           : 'Nie prawidłowa strona.'}
       </h2>
     </div>
-  );
-};
+  )
+}
 
-export default Header;
+export default Header

@@ -1,13 +1,60 @@
-import React from 'react';
+import React, { useEffect } from 'react'
+import tabsData from '../../tabsData'
+
+const handleTabs = () => {
+  var tabElements = Array.prototype.slice.call(
+    document.querySelectorAll('.tabs .tab')
+  )
+  var initialActiveTabId = 2
+
+  setActiveTab(initialActiveTabId)
+
+  tabElements.forEach(function(tab) {
+    tab.addEventListener('click', function(event) {
+      var clickedTabId = tab.dataset.id
+
+      setActiveTab(clickedTabId)
+    })
+  })
+}
+
+const setActiveTab = id => {
+  var betsDailyElement = document.querySelector('#bets_daily')
+  var betsMonthlyElement = document.querySelector('#bets_monthly')
+  var timeDailyElement = document.querySelector('#time_daily')
+  var timeMonthlyElement = document.querySelector('#time_monthly')
+  var activeTabData = tabsData.filter(function(entry) {
+    return entry.id == id
+  })
+  var tabElements = Array.prototype.slice.call(
+    document.querySelectorAll('.tabs .tab')
+  )
+  var activeTabElement = document.querySelector('.tab[data-id="' + id + '"]')
+
+  for (var i = 0; i < tabElements.length; i++) {
+    tabElements[i].classList.remove('tab--active')
+  }
+
+  activeTabElement.classList.add('tab--active')
+
+  betsDailyElement.value = activeTabData[0].bets_daily + ' zł'
+  betsMonthlyElement.value = activeTabData[0].bets_monthly + ' zł'
+  timeDailyElement.value = activeTabData[0].time_daily + ' godzin'
+  timeMonthlyElement.value = activeTabData[0].time_monthly + ' godzin'
+}
 
 const STEP_3 = ({ setCurrentPage, form, setForm }) => {
+  useEffect(() => {
+    handleTabs()
+  })
+
   // TODO: DRY
   const handleInputChange = e => {
     setForm({
       ...form,
       [e.target.name]: e.target.value
-    });
-  };
+    })
+  }
 
   return (
     <>
@@ -66,8 +113,8 @@ const STEP_3 = ({ setCurrentPage, form, setForm }) => {
       <div className="buttons-wrapper">
         <button
           onClick={e => {
-            e.preventDefault();
-            setCurrentPage('2');
+            e.preventDefault()
+            setCurrentPage('2')
           }}
           className="button button--small button--gray mb-20 d-mb-80"
         >
@@ -75,8 +122,8 @@ const STEP_3 = ({ setCurrentPage, form, setForm }) => {
         </button>
         <button
           onClick={e => {
-            e.preventDefault();
-            setCurrentPage('1_1');
+            e.preventDefault()
+            setCurrentPage('1_1')
           }}
           className="button mb-20 d-mb-80"
         >
@@ -84,7 +131,7 @@ const STEP_3 = ({ setCurrentPage, form, setForm }) => {
         </button>
       </div>
     </>
-  );
-};
+  )
+}
 
-export default STEP_3;
+export default STEP_3

@@ -875,11 +875,6 @@ select {
       top: 80px; } }
   .errorMessage--gray {
     color: #878787; }
-  .errorMessage--top {
-    top: -5px; }
-    @media (min-width: 1100px) {
-      .errorMessage--top {
-        top: 0; } }
 
 .label {
   display: block;

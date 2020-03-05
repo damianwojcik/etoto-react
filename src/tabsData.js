@@ -23,6 +23,6 @@ const tabsData = [
     time_daily: 20,
     time_monthly: 720
   }
-];
+]
 
-export default tabsData;
+export default tabsData

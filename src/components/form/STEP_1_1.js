@@ -1,71 +1,70 @@
-import React from 'react';
-import selfie from '../../assets/images/selfie.jpg';
+import React from 'react'
+import selfie from '../../assets/images/selfie.jpg'
+
+const changePasswordVisibility = e => {
+  var parentElement = e.target.parentElement
+  var inputElement = parentElement.querySelector('input')
+
+  if (inputElement.type === 'password') {
+    inputElement.type = 'text'
+    e.target.classList.toggle('show')
+  } else {
+    inputElement.type = 'password'
+    e.target.classList.toggle('show')
+  }
+}
+
+const expandCheckboxHandler = e => {
+  var wrapperElem = e.target.parentElement
+  var spanElem = wrapperElem.querySelector('.checkbox__text')
+  var labelElem = wrapperElem.querySelector('label')
+
+  e.preventDefault()
+
+  if (spanElem.classList.contains('expanded')) {
+    labelElem.classList.remove('expanded')
+    spanElem.classList.remove('expanded')
+    e.target.classList.remove('expanded')
+    e.target.innerText = 'rozwiń'
+  } else {
+    labelElem.classList.add('expanded')
+    spanElem.classList.add('expanded')
+    e.target.classList.add('expanded')
+    e.target.innerText = 'zwiń'
+  }
+}
+
+const expandDisclaimerHandler = e => {
+  var wrapperElem = e.target.parentElement
+  var paragraphElem = wrapperElem.querySelector('p')
+
+  e.preventDefault()
+
+  if (paragraphElem.classList.contains('expanded')) {
+    paragraphElem.classList.remove('expanded')
+    e.target.classList.remove('expanded')
+    e.target.innerText = 'rozwiń'
+  } else {
+    paragraphElem.classList.add('expanded')
+    e.target.classList.add('expanded')
+    e.target.innerText = 'zwiń'
+  }
+}
 
 const STEP_1_1 = ({ setCurrentPage, form, setForm }) => {
-  const changePasswordVisibility = e => {
-    var parentElement = e.target.parentElement;
-    var inputElement = parentElement.querySelector('input');
-
-    if (inputElement.type === 'password') {
-      inputElement.type = 'text';
-      e.target.classList.toggle('show');
-    } else {
-      inputElement.type = 'password';
-      e.target.classList.toggle('show');
-    }
-  };
-
-  const expandCheckboxHandler = e => {
-    var wrapperElem = e.target.parentElement;
-    var spanElem = wrapperElem.querySelector('.checkbox__text');
-    var labelElem = wrapperElem.querySelector('label');
-
-    e.preventDefault();
-
-    if (spanElem.classList.contains('expanded')) {
-      labelElem.classList.remove('expanded');
-      spanElem.classList.remove('expanded');
-      e.target.classList.remove('expanded');
-      e.target.innerText = 'rozwiń';
-    } else {
-      labelElem.classList.add('expanded');
-      spanElem.classList.add('expanded');
-      e.target.classList.add('expanded');
-      e.target.innerText = 'zwiń';
-    }
-  };
-
-  const expandDisclaimerHandler = e => {
-    var wrapperElem = e.target.parentElement;
-    var paragraphElem = wrapperElem.querySelector('p');
-
-    e.preventDefault();
-
-    if (paragraphElem.classList.contains('expanded')) {
-      paragraphElem.classList.remove('expanded');
-      e.target.classList.remove('expanded');
-      e.target.innerText = 'rozwiń';
-    } else {
-      paragraphElem.classList.add('expanded');
-      e.target.classList.add('expanded');
-      e.target.innerText = 'zwiń';
-    }
-  };
-
   const handleInputChange = e => {
     setForm({
       ...form,
       [e.target.name]: e.target.value
-    });
-  };
+    })
+  }
 
   const handleCheckboxChange = e => {
     setForm({
       ...form,
       [e.target.name]: !form[e.target.name]
-    });
-  };
-
+    })
+  }
   return (
     <>
       <div className="input-wrapper mb-15 d-mb-45">
@@ -157,22 +156,19 @@ const STEP_1_1 = ({ setCurrentPage, form, setForm }) => {
         </div>
         <button
           onClick={e => {
-            e.preventDefault();
-            setCurrentPage('1_2');
+            e.preventDefault()
+            setCurrentPage('1_2')
           }}
           className="button button--large mb-25 d-mb-40"
         >
-          <span className="mobile-only">
-            {' '}
-            Zrób zdjęcie dokumentu tożsamości
-          </span>
+          <span className="mobile-only">Zrób zdjęcie dokumentu tożsamości</span>
           <span className="desktop-only">Wyślij dokument tożsamości</span>
         </button>
         <div className="link-wrapper mb-25 d-mb-40">
           <button
             onClick={e => {
-              e.preventDefault();
-              setCurrentPage('1_3');
+              e.preventDefault()
+              setCurrentPage('1_3')
             }}
           >
             Doślij dokument tożsamości później
@@ -200,7 +196,7 @@ const STEP_1_1 = ({ setCurrentPage, form, setForm }) => {
         </button>
       </div>
     </>
-  );
-};
+  )
+}
 
-export default STEP_1_1;
+export default STEP_1_1

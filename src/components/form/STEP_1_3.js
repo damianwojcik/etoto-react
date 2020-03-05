@@ -1,31 +1,41 @@
-import React from 'react';
+import React from 'react'
+
+const onlyNumbersInputHandler = e => {
+  e.target.value = e.target.value
+    .replace(/[^0-9.]/g, '')
+    .replace(/(\..*)\./g, '$1')
+}
+
+const dateInputHandler = e => {
+  e.target.value = e.target.value
+    .replace(/[^0-9/]/g, '')
+    .replace(/(\..*)\./g, '$1')
+
+  if (e.target.value.length === 2 || e.target.value.length === 5) {
+    e.target.value += '/'
+  }
+}
+
+const datepickerChangeHandler = e => {
+  var datePickerInputElem = document.querySelector('#js-datepicker')
+  var date = new Date(e.target.value)
+  var day = date.getDate()
+  var month = date.getMonth() + 1
+  var year = date.getFullYear()
+  var formattedDay = day < 10 ? '0' + day : day
+  var formattedMonth = month < 10 ? '0' + month : month
+  var formattedDate = formattedDay + '/' + formattedMonth + '/' + year
+
+  datePickerInputElem.value = formattedDate
+}
 
 const STEP_1_3 = ({ setCurrentPage, form, setForm }) => {
   const handleInputChange = e => {
     setForm({
       ...form,
       [e.target.name]: e.target.value
-    });
-  };
-
-  const datepickerChangeHandler = e => {
-    var datePickerInputElem = document.querySelector('#js-datepicker');
-    var date = new Date(e.target.value);
-    var day = date.getDate();
-    var month = date.getMonth() + 1;
-    var year = date.getFullYear();
-    var formattedDay = day < 10 ? '0' + day : day;
-    var formattedMonth = month < 10 ? '0' + month : month;
-    var formattedDate = formattedDay + '/' + formattedMonth + '/' + year;
-
-    datePickerInputElem.value = formattedDate;
-  };
-
-  const onlyNumbersInputHandler = e => {
-    e.target.value = e.target.value
-      .replace(/[^0-9.]/g, '')
-      .replace(/(\..*)\./g, '$1');
-  };
+    })
+  }
 
   return (
     <>
@@ -49,9 +59,7 @@ const STEP_1_3 = ({ setCurrentPage, form, setForm }) => {
         />
       </div>
       <div className="input-wrapper mb-20 d-mb-35">
-        <span className="errorMessage errorMessage--gray errorMessage--top">
-          Obywatelstwo
-        </span>
+        <span className="errorMessage errorMessage--gray">Obywatelstwo</span>
         <select
           name="nationality"
           className="js-select2 input select"
@@ -93,6 +101,7 @@ const STEP_1_3 = ({ setCurrentPage, form, setForm }) => {
           type="text"
           placeholder="Data ważności dokumentu tożsamości"
           onChange={handleInputChange}
+          onInput={dateInputHandler}
         />
         <div className="datepicker-wrapper">
           <input
@@ -107,8 +116,8 @@ const STEP_1_3 = ({ setCurrentPage, form, setForm }) => {
         <div className="buttons-wrapper">
           <button
             onClick={e => {
-              e.preventDefault();
-              setCurrentPage('1_2');
+              e.preventDefault()
+              setCurrentPage('1_2')
             }}
             className="button button--small button--gray mb-20 d-mb-80"
           >
@@ -116,8 +125,8 @@ const STEP_1_3 = ({ setCurrentPage, form, setForm }) => {
           </button>
           <button
             onClick={e => {
-              e.preventDefault();
-              setCurrentPage('2');
+              e.preventDefault()
+              setCurrentPage('2')
             }}
             className="button mb-20 d-mb-80"
           >
@@ -126,7 +135,7 @@ const STEP_1_3 = ({ setCurrentPage, form, setForm }) => {
         </div>
       </div>
     </>
-  );
-};
+  )
+}
 
-export default STEP_1_3;
+export default STEP_1_3
