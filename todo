@@ -1,9 +1,11 @@
 - react select2 - https://github.com/JedWatson/react-select
 - animations - gsap?
-- scss modules?
-- transition __number size
 - image-preload Gatsby-like
 - get rid of "js-*" classes
 - // TODO:
 - test ie/ iphone
+- mobile datepicker perserve date in state 
+
+- scss modules?
+- transition __number size
 - height skacze

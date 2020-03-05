@@ -91,7 +91,7 @@ const STEP_1_3 = ({ setCurrentPage, form, setForm }) => {
       <div className="input-wrapper mb-20 d-mb-35 d-ml-115">
         <input
           name="pesel"
-          className={`input ${errors.lastName && 'input--invalid'}`}
+          className={`input ${errors.pesel && 'input--invalid'}`}
           type="tel"
           placeholder="PESEL"
           onChange={handleInputChange}
@@ -126,12 +126,15 @@ const STEP_1_3 = ({ setCurrentPage, form, setForm }) => {
           placeholder="Data ważności dokumentu tożsamości"
           onChange={handleInputChange}
           onInput={dateInputHandler}
+          defaultValue={form['identityExpiryDate']}
         />
         <div className="datepicker-wrapper">
           <input
             className="datepicker"
             type="date"
             onChange={datepickerChangeHandler}
+            // TODO: convert from DD/MM/YYYY to type="date" correct format
+            defaultValue={form['identityExpiryDate']}
           />
         </div>
         <span className="errorMessage errorMessage--gray">Nieobowiązkowe</span>

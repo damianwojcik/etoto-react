@@ -68,7 +68,7 @@ function App() {
       )
       break
     default:
-      // error component
+      // TODO: error component instead
       currentPageComponent = <STEP_1_1 setCurrentPage={setCurrentPage} />
       break
   }
