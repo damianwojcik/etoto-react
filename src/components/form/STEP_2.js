@@ -1,6 +1,11 @@
 import React from 'react'
+import { useForm } from 'react-hook-form'
 
 const handleZipCode = e => {
+  e.target.value = e.target.value
+    .replace(/[^0-9-/]/g, '')
+    .replace(/(\..*)\./g, '$1')
+
   if (e.target.value.length === 2) {
     const newText =
       e.target.value.substring(0, 2) + '-' + e.target.value.substring(5)
@@ -8,7 +13,17 @@ const handleZipCode = e => {
   }
 }
 
+const phoneNumberInputHandler = e => {
+  e.target.value = e.target.value
+    .replace(/[^0-9+ ]/g, '')
+    .replace(/(\..*)\./g, '$1')
+}
+
 const STEP_2 = ({ setCurrentPage, form, setForm }) => {
+  const { register, handleSubmit, errors } = useForm()
+  const onSubmit = data => {
+    setCurrentPage('3')
+  }
   // TODO: DRY
   const handleInputChange = e => {
     setForm({
@@ -26,14 +41,14 @@ const STEP_2 = ({ setCurrentPage, form, setForm }) => {
   }
 
   return (
-    <>
+    <form className="form" onSubmit={handleSubmit(onSubmit)}>
       <div className="input-wrapper mb-20 d-mb-35">
         <span className="errorMessage errorMessage--gray">Kraj urodzenia</span>
         <select
           name="country"
           className="js-select2 input select"
-          defaultValue="poland"
           onChange={handleInputChange}
+          value={form['nationality']}
         >
           <option value="poland">Polska</option>
           <option value="Andorra">Andorra</option>
@@ -44,43 +59,63 @@ const STEP_2 = ({ setCurrentPage, form, setForm }) => {
       </div>
       <div className="input-wrapper mb-20 d-mb-35 d-ml-115">
         <input
-          className="input"
+          className={`input ${errors.address && 'input--invalid'}`}
           type="text"
           name="address"
           placeholder="Adres"
           onChange={handleInputChange}
+          ref={register({ required: true })}
+          value={form['address']}
         />
+        {errors.address && errors.address.type === 'required' && (
+          <span className="errorMessage">Adres jest wymagany.</span>
+        )}
       </div>
       <div className="input-wrapper mb-20 d-mb-35">
         <input
           type="tel"
           name="zipCode"
-          className="input"
+          className={`input ${errors.zipCode && 'input--invalid'}`}
           placeholder="Kod pocztowy"
           onChange={handleInputChange}
-          onKeyDown={handleZipCode}
+          onInput={handleZipCode}
           maxLength="6"
+          ref={register({ required: true })}
+          value={form['zipCode']}
         />
+        {errors.zipCode && errors.zipCode.type === 'required' && (
+          <span className="errorMessage">Kod pocztowy jest wymagany.</span>
+        )}
       </div>
       <div className="input-wrapper mb-20 d-mb-35 d-ml-115">
         <input
-          className="input"
+          className={`input ${errors.city && 'input--invalid'}`}
           type="text"
           name="city"
           placeholder="Miejscowość"
           onChange={handleInputChange}
+          ref={register({ required: true })}
+          value={form['city']}
         />
+        {errors.city && errors.city.type === 'required' && (
+          <span className="errorMessage">Miejscowość jest wymagana.</span>
+        )}
       </div>
       <div className="inner-wrapper inner-wrapper--large">
         <div className="input-wrapper mb-35 d-mb-50">
           <input
-            className="js-phoneNumber input"
+            className={`input ${errors.phone && 'input--invalid'}`}
             type="tel"
             name="phone"
             placeholder="Numer telefonu"
-            defaultValue="+48 "
             onChange={handleInputChange}
+            onInput={phoneNumberInputHandler}
+            ref={register({ required: true, minLength: 9 })}
+            value={form['phone']}
           />
+          {errors.phone && (
+            <span className="errorMessage">Numer telefonu jest wymagany.</span>
+          )}
         </div>
         <div className="checkbox-wrapper mb-35 d-mb-50">
           <input
@@ -107,18 +142,12 @@ const STEP_2 = ({ setCurrentPage, form, setForm }) => {
           >
             Wróć
           </button>
-          <button
-            onClick={e => {
-              e.preventDefault()
-              setCurrentPage('3')
-            }}
-            className="button mb-20 d-mb-80"
-          >
+          <button type="submit" className="button mb-20 d-mb-80">
             Kontynuuj
           </button>
         </div>
       </div>
-    </>
+    </form>
   )
 }
 

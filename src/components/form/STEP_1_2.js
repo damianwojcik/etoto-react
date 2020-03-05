@@ -5,7 +5,7 @@ import placeholderDesktop from '../../assets/images/placeholder-desktop.jpg'
 
 const STEP_1_2 = ({ setCurrentPage }) => {
   return (
-    <>
+    <div className="form">
       <div className="img-wrapper mb-35 d-mb-50">
         <picture>
           <source media="(min-width: 1100px)" srcSet={placeholderDesktop} />
@@ -32,7 +32,7 @@ const STEP_1_2 = ({ setCurrentPage }) => {
           Kontynuuj
         </button>
       </div>
-    </>
+    </div>
   )
 }
 

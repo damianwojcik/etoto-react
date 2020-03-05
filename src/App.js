@@ -10,7 +10,7 @@ import STEP_3 from './components/form/STEP_3'
 import './App.css'
 
 function App() {
-  const [currentPage, setCurrentPage] = useState('1_3')
+  const [currentPage, setCurrentPage] = useState('1_1')
   const [form, setForm] = useState({
     email: '',
     password: '',
@@ -18,15 +18,15 @@ function App() {
     checkbox2: false,
     firstName: '',
     lastName: '',
-    nationality: '',
+    nationality: 'poland',
     pesel: '',
     identityNumber: '',
     identityExpiryDate: '',
-    country: '',
+    country: 'poland',
     address: '',
     zipCode: '',
     city: '',
-    phone: '',
+    phone: '+48 ',
     checkbox3: '',
     bets_daily: '',
     bets_monthly: '',
@@ -78,7 +78,7 @@ function App() {
       <Logo />
       <Header currentPage={currentPage} />
       {currentPage === '3' && <Tabs />}
-      <form className="form">{currentPageComponent}</form>
+      {currentPageComponent}
     </div>
   )
 }

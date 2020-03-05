@@ -1,4 +1,5 @@
 import React from 'react'
+import { useForm } from 'react-hook-form'
 import selfie from '../../assets/images/selfie.jpg'
 
 const changePasswordVisibility = e => {
@@ -52,6 +53,13 @@ const expandDisclaimerHandler = e => {
 }
 
 const STEP_1_1 = ({ setCurrentPage, form, setForm }) => {
+  const { register, handleSubmit, errors } = useForm()
+  const onSubmit = (data, event) => {
+    setCurrentPage('1_2')
+    if (event.nativeEvent.submitter.classList.contains('button--skip')) {
+      setCurrentPage('1_3')
+    }
+  }
   const handleInputChange = e => {
     setForm({
       ...form,
@@ -66,34 +74,51 @@ const STEP_1_1 = ({ setCurrentPage, form, setForm }) => {
     })
   }
   return (
-    <>
+    <form className="form" onSubmit={handleSubmit(onSubmit)}>
       <div className="input-wrapper mb-15 d-mb-45">
         <input
-          className="input"
+          className={`input ${errors.email && 'input--invalid'}`}
           name="email"
           type="email"
           placeholder="Adres e-mail"
           onChange={handleInputChange}
+          ref={register({ required: true })}
+          value={form['email']}
         />
+        {errors.email && (
+          <span className="errorMessage">Email jest wymagany.</span>
+        )}
       </div>
       <div className="input-wrapper mb-25 d-mb-45 d-ml-115">
         <input
-          className="input"
+          className={`input ${errors.password && 'input--invalid'}`}
           name="password"
           type="password"
           placeholder="Podaj hasło"
           onChange={handleInputChange}
+          ref={register({ required: true, minLength: 8 })}
+          value={form['password']}
         />
         <span onClick={changePasswordVisibility} id="js-password"></span>
+        {errors.password && errors.password.type === 'required' && (
+          <span className="errorMessage">Hasło jest wymagane.</span>
+        )}
+        {errors.password && errors.password.type === 'minLength' && (
+          <span className="errorMessage">
+            Hasło musi mieć minimum 8 znaków.
+          </span>
+        )}
       </div>
       <div className="inner-wrapper">
         <div className="checkbox-wrapper checkbox-wrapper--expandable mb-20 d-mb-25">
           <input
             id="checkbox-1"
             name="checkbox1"
-            className="checkbox"
+            className={`checkbox ${errors.checkbox1 && 'checkbox--invalid'}`}
             type="checkbox"
             onChange={handleCheckboxChange}
+            ref={register({ required: true })}
+            checked={form['checkbox1']}
           />
           <label htmlFor="checkbox-1">
             <span className="checkbox__text">
@@ -139,6 +164,7 @@ const STEP_1_1 = ({ setCurrentPage, form, setForm }) => {
             className="checkbox"
             type="checkbox"
             onChange={handleCheckboxChange}
+            checked={form['checkbox2']}
           />
           <label htmlFor="checkbox-2">
             <span className="checkbox__text">
@@ -154,23 +180,12 @@ const STEP_1_1 = ({ setCurrentPage, form, setForm }) => {
         <div className="img-wrapper selfie mobile-only">
           <img src={selfie} alt="Zrób zdjęcie dokumentu tożsamości" />
         </div>
-        <button
-          onClick={e => {
-            e.preventDefault()
-            setCurrentPage('1_2')
-          }}
-          className="button button--large mb-25 d-mb-40"
-        >
+        <button type="submit" className="button button--large mb-25 d-mb-40">
           <span className="mobile-only">Zrób zdjęcie dokumentu tożsamości</span>
           <span className="desktop-only">Wyślij dokument tożsamości</span>
         </button>
         <div className="link-wrapper mb-25 d-mb-40">
-          <button
-            onClick={e => {
-              e.preventDefault()
-              setCurrentPage('1_3')
-            }}
-          >
+          <button type="submit" className="button--skip">
             Doślij dokument tożsamości później
           </button>
         </div>
@@ -195,7 +210,7 @@ const STEP_1_1 = ({ setCurrentPage, form, setForm }) => {
           rozwiń
         </button>
       </div>
-    </>
+    </form>
   )
 }
 

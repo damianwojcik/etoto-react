@@ -1,6 +1,59 @@
 import React, { useEffect } from 'react'
 import tabsData from '../../tabsData'
 
+// TODO: DRY
+const addSuffixToHoursInputs = hoursInputElems => {
+  hoursInputElems.forEach(function(element) {
+    let oldValue = element.value
+    element.addEventListener('focusin', function(e) {
+      oldValue = e.target.value
+      element.value = ''
+    })
+    element.addEventListener('focusout', function(e) {
+      if (e.target.value === '') {
+        element.value = oldValue
+      }
+    })
+    element.addEventListener('input', function(e) {
+      e.target.value = e.target.value
+        .replace(/[^0-9./]/g, '')
+        .replace(/(\..*)\./g, '$1')
+    })
+    element.addEventListener('change', function(e) {
+      const val = e.target.value
+      if (val && val.indexOf(' godzin') === -1) {
+        e.target.value = val + ' godzin'
+      }
+    })
+  })
+}
+
+const addSuffixToBetsInputs = betInputElems => {
+  betInputElems.forEach(function(element) {
+    let oldValue = element.value
+    element.addEventListener('focusin', function(e) {
+      oldValue = e.target.value
+      element.value = ''
+    })
+    element.addEventListener('focusout', function(e) {
+      if (e.target.value === '') {
+        element.value = oldValue
+      }
+    })
+    element.addEventListener('input', function(e) {
+      e.target.value = e.target.value
+        .replace(/[^0-9./]/g, '')
+        .replace(/(\..*)\./g, '$1')
+    })
+    element.addEventListener('change', function(e) {
+      const val = e.target.value
+      if (val && val.indexOf(' zł') === -1) {
+        e.target.value = val + ' zł'
+      }
+    })
+  })
+}
+
 const handleTabs = () => {
   var tabElements = Array.prototype.slice.call(
     document.querySelectorAll('.tabs .tab')
@@ -44,9 +97,19 @@ const setActiveTab = id => {
 }
 
 const STEP_3 = ({ setCurrentPage, form, setForm }) => {
+  const onSubmit = e => {
+    e.preventDefault()
+    alert(JSON.stringify(form, null, 2))
+  }
+
   useEffect(() => {
+    const hoursInputElems = document.querySelectorAll('.js-hours')
+    const betInputElems = document.querySelectorAll('.js-bet')
+
     handleTabs()
-  })
+    addSuffixToHoursInputs(hoursInputElems)
+    addSuffixToBetsInputs(betInputElems)
+  }, [])
 
   // TODO: DRY
   const handleInputChange = e => {
@@ -57,7 +120,7 @@ const STEP_3 = ({ setCurrentPage, form, setForm }) => {
   }
 
   return (
-    <>
+    <form className="form" onSubmit={onSubmit}>
       <div className="input-wrapper mb-30 d-mb-50">
         <label htmlFor="bets_daily" className="label">
           Dzienny limit na zakłady
@@ -120,17 +183,11 @@ const STEP_3 = ({ setCurrentPage, form, setForm }) => {
         >
           Wróć
         </button>
-        <button
-          onClick={e => {
-            e.preventDefault()
-            setCurrentPage('1_1')
-          }}
-          className="button mb-20 d-mb-80"
-        >
+        <button type="submit" className="button mb-20 d-mb-80">
           Zarejestruj się i rozpocznij grę
         </button>
       </div>
-    </>
+    </form>
   )
 }
 
