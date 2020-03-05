@@ -53,7 +53,7 @@ const STEP_1_3 = ({ setCurrentPage, form, setForm }) => {
           placeholder="Imię"
           onChange={handleInputChange}
           ref={register({ required: true })}
-          value={form['firstName']}
+          defaultValue={form['firstName']}
         />
         {errors.firstName && errors.firstName.type === 'required' && (
           <span className="errorMessage">Imię jest wymagane.</span>
@@ -67,7 +67,7 @@ const STEP_1_3 = ({ setCurrentPage, form, setForm }) => {
           placeholder="Nazwisko"
           onChange={handleInputChange}
           ref={register({ required: true })}
-          value={form['lastName']}
+          defaultValue={form['lastName']}
         />
         {errors.lastName && errors.lastName.type === 'required' && (
           <span className="errorMessage">Naziwsko jest wymagane.</span>
@@ -79,7 +79,7 @@ const STEP_1_3 = ({ setCurrentPage, form, setForm }) => {
           name="nationality"
           className="js-select2 input select"
           onChange={handleInputChange}
-          value={form['nationality']}
+          defaultValue={form['nationality']}
         >
           <option value="poland">Polska</option>
           <option value="Andorra">Andorra</option>
@@ -97,7 +97,7 @@ const STEP_1_3 = ({ setCurrentPage, form, setForm }) => {
           onChange={handleInputChange}
           onInput={onlyNumbersInputHandler}
           ref={register({ required: true })}
-          value={form['pesel']}
+          defaultValue={form['pesel']}
         />
         {errors.pesel && errors.pesel.type === 'required' && (
           <span className="errorMessage">PESEL jest wymagany.</span>
@@ -111,7 +111,7 @@ const STEP_1_3 = ({ setCurrentPage, form, setForm }) => {
           placeholder="Seria / numer dokumentu tożsamości"
           onChange={handleInputChange}
           ref={register({ required: true })}
-          value={form['identityNumber']}
+          defaultValue={form['identityNumber']}
         />
         {errors.identityNumber && errors.identityNumber.type === 'required' && (
           <span className="errorMessage">Pole jest wymagane.</span>

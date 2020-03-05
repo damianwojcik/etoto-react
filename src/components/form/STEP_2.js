@@ -48,7 +48,7 @@ const STEP_2 = ({ setCurrentPage, form, setForm }) => {
           name="country"
           className="js-select2 input select"
           onChange={handleInputChange}
-          value={form['nationality']}
+          defaultValue={form['nationality']}
         >
           <option value="poland">Polska</option>
           <option value="Andorra">Andorra</option>
@@ -65,7 +65,7 @@ const STEP_2 = ({ setCurrentPage, form, setForm }) => {
           placeholder="Adres"
           onChange={handleInputChange}
           ref={register({ required: true })}
-          value={form['address']}
+          defaultValue={form['address']}
         />
         {errors.address && errors.address.type === 'required' && (
           <span className="errorMessage">Adres jest wymagany.</span>
@@ -81,7 +81,7 @@ const STEP_2 = ({ setCurrentPage, form, setForm }) => {
           onInput={handleZipCode}
           maxLength="6"
           ref={register({ required: true })}
-          value={form['zipCode']}
+          defaultValue={form['zipCode']}
         />
         {errors.zipCode && errors.zipCode.type === 'required' && (
           <span className="errorMessage">Kod pocztowy jest wymagany.</span>
@@ -95,7 +95,7 @@ const STEP_2 = ({ setCurrentPage, form, setForm }) => {
           placeholder="Miejscowość"
           onChange={handleInputChange}
           ref={register({ required: true })}
-          value={form['city']}
+          defaultValue={form['city']}
         />
         {errors.city && errors.city.type === 'required' && (
           <span className="errorMessage">Miejscowość jest wymagana.</span>
@@ -111,7 +111,7 @@ const STEP_2 = ({ setCurrentPage, form, setForm }) => {
             onChange={handleInputChange}
             onInput={phoneNumberInputHandler}
             ref={register({ required: true, minLength: 9 })}
-            value={form['phone']}
+            defaultValue={form['phone']}
           />
           {errors.phone && (
             <span className="errorMessage">Numer telefonu jest wymagany.</span>

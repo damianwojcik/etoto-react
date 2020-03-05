@@ -1,10 +1,9 @@
 - react select2 - https://github.com/JedWatson/react-select
-- validate onChange
 - animations - gsap?
 - scss modules?
 - transition __number size
-- button disabled/enabled - Validation
 - image-preload Gatsby-like
 - get rid of "js-*" classes
 - // TODO:
 - test ie/ iphone
+- height skacze

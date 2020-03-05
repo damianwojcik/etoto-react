@@ -83,7 +83,7 @@ const STEP_1_1 = ({ setCurrentPage, form, setForm }) => {
           placeholder="Adres e-mail"
           onChange={handleInputChange}
           ref={register({ required: true })}
-          value={form['email']}
+          defaultValue={form['email']}
         />
         {errors.email && (
           <span className="errorMessage">Email jest wymagany.</span>
@@ -97,7 +97,7 @@ const STEP_1_1 = ({ setCurrentPage, form, setForm }) => {
           placeholder="Podaj hasło"
           onChange={handleInputChange}
           ref={register({ required: true, minLength: 8 })}
-          value={form['password']}
+          defaultValue={form['password']}
         />
         <span onClick={changePasswordVisibility} id="js-password"></span>
         {errors.password && errors.password.type === 'required' && (
