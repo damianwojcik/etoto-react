@@ -1,16 +1,19 @@
 import React from 'react'
-
+import useWindowWidth from '../../hooks/useWindowWidth'
 import placeholder from '../../assets/images/placeholder.jpg'
 import placeholderDesktop from '../../assets/images/placeholder-desktop.jpg'
 
 const STEP_1_2 = ({ setCurrentPage }) => {
+  const windowWidth = useWindowWidth()
+
   return (
     <>
       <div className="img-wrapper mb-35 d-mb-50">
-        <picture>
-          <source media="(min-width: 1100px)" srcSet={placeholderDesktop} />
+        {windowWidth < 1100 ? (
           <img src={placeholder} alt="Zrób zdjęcie dokumentu" />
-        </picture>
+        ) : (
+          <img src={placeholderDesktop} alt="Zrób zdjęcie dokumentu" />
+        )}
       </div>
       <div className="buttons-wrapper">
         <button

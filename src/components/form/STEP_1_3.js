@@ -1,7 +1,6 @@
 import React from 'react'
 import { useForm } from 'react-hook-form'
 
-// TODO: DRY
 const onlyNumbersInputHandler = e => {
   e.target.value = e.target.value
     .replace(/[^0-9.]/g, '')

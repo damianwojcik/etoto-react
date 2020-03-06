@@ -24,15 +24,12 @@ const STEP_2 = ({ setCurrentPage, form, setForm }) => {
   const onSubmit = data => {
     setCurrentPage('3')
   }
-  // TODO: DRY
   const handleInputChange = e => {
     setForm({
       ...form,
       [e.target.name]: e.target.value
     })
   }
-
-  // TODO: DRY
   const handleCheckboxChange = e => {
     setForm({
       ...form,

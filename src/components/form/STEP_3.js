@@ -95,7 +95,6 @@ const STEP_3 = ({ setCurrentPage, form, setForm }) => {
     addSuffixToBetsInputs(betInputElems)
   }, [])
 
-  // TODO: DRY
   const handleInputChange = e => {
     setForm({
       ...form,

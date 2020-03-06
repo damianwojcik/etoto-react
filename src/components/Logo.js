@@ -1,14 +1,19 @@
 import React from 'react'
+import useWindowWidth from '../hooks/useWindowWidth'
 import logo from '../assets/images/logo.jpg'
 import logoTablet from '../assets/images/logo_tablet.jpg'
 
 const Logo = () => {
+  const windowWidth = useWindowWidth()
+
   return (
-    // TODO: useWindowWidth hook with conditional img src
-    <picture className="logo">
-      <source media="(min-width: 600px)" srcSet={logoTablet} />
-      <img src={logo} alt="Etoto Promo" />
-    </picture>
+    <div className="logo">
+      {windowWidth < 600 ? (
+        <img src={logo} alt="Etoto Promo" />
+      ) : (
+        <img src={logoTablet} alt="Etoto Promo" />
+      )}
+    </div>
   )
 }
 

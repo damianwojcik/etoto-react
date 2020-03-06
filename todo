@@ -1,7 +1,6 @@
 - select https://material-ui.com/components/selects/ , on mobile native or DOWNSHIFT
 - animations - gsap?
 - image-preload Gatsby-like
-- // TODO:
 
 React:
 - propTypes
