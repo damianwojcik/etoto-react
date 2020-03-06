@@ -18,19 +18,6 @@ const dateInputHandler = e => {
   }
 }
 
-const datepickerChangeHandler = e => {
-  var datePickerInputElem = document.querySelector('#js-datepicker')
-  var date = new Date(e.target.value)
-  var day = date.getDate()
-  var month = date.getMonth() + 1
-  var year = date.getFullYear()
-  var formattedDay = day < 10 ? '0' + day : day
-  var formattedMonth = month < 10 ? '0' + month : month
-  var formattedDate = formattedDay + '/' + formattedMonth + '/' + year
-
-  datePickerInputElem.value = formattedDate
-}
-
 const STEP_1_3 = ({ setCurrentPage, form, setForm }) => {
   const { register, handleSubmit, errors } = useForm()
   const onSubmit = data => {
@@ -43,8 +30,26 @@ const STEP_1_3 = ({ setCurrentPage, form, setForm }) => {
     })
   }
 
+  const datepickerChangeHandler = e => {
+    const datePickerInputElem = document.querySelector('#js-datepicker')
+    const date = new Date(e.target.value)
+    const day = date.getDate()
+    const month = date.getMonth() + 1
+    const year = date.getFullYear()
+    const formattedDay = day < 10 ? '0' + day : day
+    const formattedMonth = month < 10 ? '0' + month : month
+    const formattedDate = formattedDay + '/' + formattedMonth + '/' + year
+
+    datePickerInputElem.value = formattedDate
+
+    setForm({
+      ...form,
+      identityExpiryDate: formattedDate
+    })
+  }
+
   return (
-    <form className="form" onSubmit={handleSubmit(onSubmit)}>
+    <form onSubmit={handleSubmit(onSubmit)}>
       <div className="input-wrapper mb-20 d-mb-35">
         <input
           className={`input ${errors.firstName && 'input--invalid'}`}
@@ -133,7 +138,6 @@ const STEP_1_3 = ({ setCurrentPage, form, setForm }) => {
             className="datepicker"
             type="date"
             onChange={datepickerChangeHandler}
-            // TODO: convert from DD/MM/YYYY to type="date" correct format
             defaultValue={form['identityExpiryDate']}
           />
         </div>

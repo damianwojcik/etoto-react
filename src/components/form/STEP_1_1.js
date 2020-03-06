@@ -74,7 +74,7 @@ const STEP_1_1 = ({ setCurrentPage, form, setForm }) => {
     })
   }
   return (
-    <form className="form" onSubmit={handleSubmit(onSubmit)}>
+    <form onSubmit={handleSubmit(onSubmit)}>
       <div className="input-wrapper mb-15 d-mb-45">
         <input
           className={`input ${errors.email && 'input--invalid'}`}
@@ -150,7 +150,6 @@ const STEP_1_1 = ({ setCurrentPage, form, setForm }) => {
           </label>
           <button
             type="button"
-            id="js-expandCheckbox"
             className="expand-link link"
             onClick={expandCheckboxHandler}
           >
@@ -204,7 +203,6 @@ const STEP_1_1 = ({ setCurrentPage, form, setForm }) => {
         <button
           type="button"
           onClick={expandDisclaimerHandler}
-          id="js-expandDisclaimer"
           className="expand-link"
         >
           rozwiń

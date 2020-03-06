@@ -1,5 +1,4 @@
 import React, { useEffect } from 'react'
-import Tabs from '../Tabs'
 import tabsData from '../../tabsData'
 
 const addInputHandlers = inputsArr => {
@@ -59,7 +58,7 @@ const handleTabs = (form, setForm) => {
 const setActiveTab = (id, form, setForm) => {
   const activeTabData = tabsData.filter(entry => entry.id == id)
   const tabElements = document.querySelectorAll('.tabs .tab')
-  const activeTabElement = document.querySelector('.tab[data-id="' + id + '"]')
+  const activeTabElement = document.querySelector(`.tab[data-id="${id}"`)
 
   for (let i = 0; i < tabElements.length; i++) {
     tabElements[i].classList.remove('tab--active')
@@ -105,81 +104,78 @@ const STEP_3 = ({ setCurrentPage, form, setForm }) => {
   }
 
   return (
-    <>
-      <Tabs />
-      <form className="form" onSubmit={onSubmit}>
-        <div className="input-wrapper mb-30 d-mb-50">
-          <label htmlFor="bets_daily" className="label">
-            Dzienny limit na zakłady
-          </label>
-          <input
-            id="bets_daily"
-            name="bets_daily"
-            className="input js-onlyNumbers js-bet"
-            type="tel"
-            placeholder=" "
-            onChange={handleInputChange}
-            defaultValue={form['bets_daily']}
-          />
-        </div>
-        <div className="input-wrapper mb-30 d-mb-50 d-ml-115">
-          <label htmlFor="bets_monthly" className="label">
-            Miesięczny limit na zakłady
-          </label>
-          <input
-            id="bets_monthly"
-            name="bets_monthly"
-            className="input js-onlyNumbers js-bet"
-            type="tel"
-            placeholder=" "
-            onChange={handleInputChange}
-            defaultValue={form['bets_monthly']}
-          />
-        </div>
-        <div className="input-wrapper mb-30 d-mb-50">
-          <label htmlFor="time_daily" className="label">
-            Dzienny limit czasu na zakłady
-          </label>
-          <input
-            id="time_daily"
-            name="time_daily"
-            className="input js-onlyNumbers js-hours"
-            type="tel"
-            placeholder=" "
-            onChange={handleInputChange}
-            defaultValue={form['time_daily']}
-          />
-        </div>
-        <div className="input-wrapper mb-40 d-mb-100 d-ml-115">
-          <label htmlFor="time_monthly" className="label">
-            Miesięczny limit czasu na zakłady
-          </label>
-          <input
-            id="time_monthly"
-            name="time_monthly"
-            className="input js-onlyNumbers js-hours"
-            type="tel"
-            placeholder=" "
-            onChange={handleInputChange}
-            defaultValue={form['time_monthly']}
-          />
-        </div>
-        <div className="buttons-wrapper">
-          <button
-            onClick={e => {
-              e.preventDefault()
-              setCurrentPage('2')
-            }}
-            className="button button--small button--gray mb-20 d-mb-80"
-          >
-            Wróć
-          </button>
-          <button type="submit" className="button mb-20 d-mb-80">
-            Zarejestruj się i rozpocznij grę
-          </button>
-        </div>
-      </form>
-    </>
+    <form onSubmit={onSubmit}>
+      <div className="input-wrapper mb-30 d-mb-50">
+        <label htmlFor="bets_daily" className="label">
+          Dzienny limit na zakłady
+        </label>
+        <input
+          id="bets_daily"
+          name="bets_daily"
+          className="input js-onlyNumbers js-bet"
+          type="tel"
+          placeholder=" "
+          onChange={handleInputChange}
+          defaultValue={form['bets_daily']}
+        />
+      </div>
+      <div className="input-wrapper mb-30 d-mb-50 d-ml-115">
+        <label htmlFor="bets_monthly" className="label">
+          Miesięczny limit na zakłady
+        </label>
+        <input
+          id="bets_monthly"
+          name="bets_monthly"
+          className="input js-onlyNumbers js-bet"
+          type="tel"
+          placeholder=" "
+          onChange={handleInputChange}
+          defaultValue={form['bets_monthly']}
+        />
+      </div>
+      <div className="input-wrapper mb-30 d-mb-50">
+        <label htmlFor="time_daily" className="label">
+          Dzienny limit czasu na zakłady
+        </label>
+        <input
+          id="time_daily"
+          name="time_daily"
+          className="input js-onlyNumbers js-hours"
+          type="tel"
+          placeholder=" "
+          onChange={handleInputChange}
+          defaultValue={form['time_daily']}
+        />
+      </div>
+      <div className="input-wrapper mb-40 d-mb-100 d-ml-115">
+        <label htmlFor="time_monthly" className="label">
+          Miesięczny limit czasu na zakłady
+        </label>
+        <input
+          id="time_monthly"
+          name="time_monthly"
+          className="input js-onlyNumbers js-hours"
+          type="tel"
+          placeholder=" "
+          onChange={handleInputChange}
+          defaultValue={form['time_monthly']}
+        />
+      </div>
+      <div className="buttons-wrapper">
+        <button
+          onClick={e => {
+            e.preventDefault()
+            setCurrentPage('2')
+          }}
+          className="button button--small button--gray mb-20 d-mb-80"
+        >
+          Wróć
+        </button>
+        <button type="submit" className="button mb-20 d-mb-80">
+          Zarejestruj się i rozpocznij grę
+        </button>
+      </div>
+    </form>
   )
 }
 

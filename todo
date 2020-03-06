@@ -1,16 +1,8 @@
-- mobile datepicker perserve date in state 
-
 - select https://material-ui.com/components/selects/ , on mobile native or DOWNSHIFT
 - animations - gsap?
 - image-preload Gatsby-like
 - // TODO:
 
-SCSS:
-- get rid of "js-*" classes
-
-JS:
--function(  => arrow functions
-- var => const
-
 React:
 - propTypes
+- prevStep in App state so Back buttons works correct on 1_2 and 1_3

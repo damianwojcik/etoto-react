@@ -1,6 +1,8 @@
 import React, { useState } from 'react'
 import Logo from './components/Logo'
 import Header from './components/Header'
+import Tabs from './components/Tabs'
+import ErrorPage from './components/ErrorPage'
 import STEP_1_1 from './components/form/STEP_1_1'
 import STEP_1_2 from './components/form/STEP_1_2'
 import STEP_1_3 from './components/form/STEP_1_3'
@@ -67,8 +69,7 @@ function App() {
       )
       break
     default:
-      // TODO: error component instead
-      currentPageComponent = <STEP_1_1 setCurrentPage={setCurrentPage} />
+      currentPageComponent = <ErrorPage setCurrentPage={setCurrentPage} />
       break
   }
 
@@ -76,7 +77,8 @@ function App() {
     <div className="page-wrapper">
       <Logo />
       <Header currentPage={currentPage} />
-      {currentPageComponent}
+      {currentPage === '3' && <Tabs />}
+      <div className="form-wrapper">{currentPageComponent}</div>
     </div>
   )
 }

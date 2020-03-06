@@ -41,7 +41,7 @@ const STEP_2 = ({ setCurrentPage, form, setForm }) => {
   }
 
   return (
-    <form className="form" onSubmit={handleSubmit(onSubmit)}>
+    <form onSubmit={handleSubmit(onSubmit)}>
       <div className="input-wrapper mb-20 d-mb-35">
         <span className="errorMessage errorMessage--gray">Kraj urodzenia</span>
         <select
