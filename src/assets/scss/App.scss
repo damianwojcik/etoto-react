@@ -1,44 +1,8 @@
 @import './variables';
 @import './normalize';
 @import './icons';
-@import './select2';
+@import './globalStyles';
 @import './helpers';
-
-*, *::before, *::after {
-  box-sizing: border-box;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-}
-
-body {
-  background: #EBEBEB;
-  padding: 10px;
-  font-family: 'Muli', sans-serif;
-  @media (min-width: $breakpoint) {
-    background: url(../assets/images/desktop_bg.jpg) center top no-repeat;
-    padding-top: 150px;
-    padding-bottom: 65px;
-  }
-}
-
-img {
-  max-width: 100%;
-}
-
-a,
-button {
-  color: $red;
-  @media (min-width: $breakpoint) {
-    transition: color 0.3s ease;
-    &:hover {
-      color: #222;
-    }
-  }
-}
-
-select {
-  background: transparent;
-}
 
 .page-wrapper {
   background: #FFFFFF;
@@ -218,10 +182,10 @@ select {
 }
 
 .link-wrapper {
-  a {
+  text-align: center;
+  button {
     font-weight: 700;
-    display: block;
-    text-align: center;
+    display: inline-block;
     font-size: 13px;
     @media (min-width: $breakpoint) {
       font-size: 16px;
@@ -269,6 +233,7 @@ select {
     color: #878787;
     position: relative;
     font-size: 11px;
+    transition: width 0.3s ease, height 0.3s ease;
     @media (min-width: $breakpoint) {
       width: 40px;
       height: 40px;
@@ -309,7 +274,7 @@ select {
     width: 0;
     background: $blue;
     height: 2px;
-    transition: background 0.3s ease;
+    transition: background 0.3s ease, width 0.3s ease;
     &--done {
       background: $green;
     }
@@ -648,28 +613,4 @@ select {
   margin: 0;
   padding: 0;
   height: 40px;
-}
-
-// Select2 Customs
-.select2-dropdown {
-  border-radius: 0;
-}
-
-.select2-container--default .select2-selection--single {
-  border: none;
-  border-bottom: 2px solid #D6D6D6;
-  border-radius: 0;
-  height: 66px;
-  outline: none;
-  font-size: 20px;
-}
-
-.select2-container .select2-selection--single .select2-selection__rendered {
-  color: #222;
-  line-height: 66px;
-  padding-left: 0;
-}
-
-.select2-container--default .select2-selection--single .select2-selection__arrow {
-  top: 22px;
 }

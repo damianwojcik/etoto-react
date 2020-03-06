@@ -3,8 +3,8 @@ import { useForm } from 'react-hook-form'
 import selfie from '../../assets/images/selfie.jpg'
 
 const changePasswordVisibility = e => {
-  var parentElement = e.target.parentElement
-  var inputElement = parentElement.querySelector('input')
+  const parentElement = e.target.parentElement
+  const inputElement = parentElement.querySelector('input')
 
   if (inputElement.type === 'password') {
     inputElement.type = 'text'
@@ -16,9 +16,9 @@ const changePasswordVisibility = e => {
 }
 
 const expandCheckboxHandler = e => {
-  var wrapperElem = e.target.parentElement
-  var spanElem = wrapperElem.querySelector('.checkbox__text')
-  var labelElem = wrapperElem.querySelector('label')
+  const wrapperElem = e.target.parentElement
+  const spanElem = wrapperElem.querySelector('.checkbox__text')
+  const labelElem = wrapperElem.querySelector('label')
 
   e.preventDefault()
 
@@ -36,8 +36,8 @@ const expandCheckboxHandler = e => {
 }
 
 const expandDisclaimerHandler = e => {
-  var wrapperElem = e.target.parentElement
-  var paragraphElem = wrapperElem.querySelector('p')
+  const wrapperElem = e.target.parentElement
+  const paragraphElem = wrapperElem.querySelector('p')
 
   e.preventDefault()
 

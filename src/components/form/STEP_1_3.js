@@ -77,7 +77,7 @@ const STEP_1_3 = ({ setCurrentPage, form, setForm }) => {
         <span className="errorMessage errorMessage--gray">Obywatelstwo</span>
         <select
           name="nationality"
-          className="js-select2 input select"
+          className="input select"
           onChange={handleInputChange}
           defaultValue={form['nationality']}
         >

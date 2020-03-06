@@ -1,0 +1,44 @@
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+body {
+  background: #ebebeb;
+  padding: 10px;
+  font-family: 'Muli', sans-serif;
+  @media (min-width: $breakpoint) {
+    background: url(../images/desktop_bg.jpg) center top no-repeat;
+    padding-top: 150px;
+    padding-bottom: 65px;
+  }
+}
+
+img {
+  max-width: 100%;
+}
+
+a,
+button {
+  color: $red;
+  @media (min-width: $breakpoint) {
+    transition: color 0.3s ease;
+    &:hover {
+      color: #222;
+    }
+  }
+}
+
+button {
+  outline: none;
+  background: transparent;
+  border: 0;
+  cursor: pointer;
+}
+
+select {
+  background: transparent;
+}
