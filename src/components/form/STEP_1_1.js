@@ -56,9 +56,6 @@ const STEP_1_1 = ({ setCurrentPage, form, setForm }) => {
   const { register, handleSubmit, errors } = useForm()
   const onSubmit = (data, event) => {
     setCurrentPage('1_2')
-    if (event.nativeEvent.submitter.classList.contains('button--skip')) {
-      setCurrentPage('1_3')
-    }
   }
   const handleInputChange = e => {
     setForm({
@@ -184,9 +181,7 @@ const STEP_1_1 = ({ setCurrentPage, form, setForm }) => {
           <span className="desktop-only">Wyślij dokument tożsamości</span>
         </button>
         <div className="link-wrapper mb-25 d-mb-40">
-          <button type="submit" className="button--skip">
-            Doślij dokument tożsamości później
-          </button>
+          <button type="submit">Doślij dokument tożsamości później</button>
         </div>
       </div>
       <div className="disclaimer">
